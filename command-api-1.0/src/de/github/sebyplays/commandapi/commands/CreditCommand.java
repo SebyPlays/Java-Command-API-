@@ -2,23 +2,24 @@ package de.github.sebyplays.commandapi.commands;
 
 import de.github.sebyplays.commandapi.api.CommandExecution;
 import de.github.sebyplays.commandapi.api.CommandProcessor;
+import de.github.sebyplays.consoleprinterapi.api.ConsolePrinter;
 
 public class CreditCommand implements CommandExecution {
     private CommandProcessor commandProcessor = new CommandProcessor();
     @Override
     public boolean onExecute(String command, String[] args) {
-        System.out.println(command + args[0]);
+        ConsolePrinter.print(command + args[0], false, false);
         if (args.length == 1){
             if (args[0].equalsIgnoreCase("github")){
-                System.out.println("\n------------------------- \nGitHub of Seby_Plays : https://github.com/SebyPlays \n-------------------------");
+                ConsolePrinter.print("\n------------------------- \nGitHub of Seby_Plays : https://github.com/SebyPlays \n-------------------------", false, false);
                 return false;
             }
             if (args[0].equalsIgnoreCase("website")){
-                System.out.println("\n------------------------- \nWebsite of Seby_Plays : https://mcsilent.de \n-------------------------");
+                ConsolePrinter.print("\n------------------------- \nWebsite of Seby_Plays : https://mcsilent.de \n-------------------------", false, false);
                 return false;
             }
         }
-        commandProcessor.invalidArguments();
+        this.commandProcessor.invalidArguments();
         return false;
     }
 }
